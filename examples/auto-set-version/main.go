@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("%#v", goappversion.Get())
+	fmt.Println(goappversion.Get().Json())
 }

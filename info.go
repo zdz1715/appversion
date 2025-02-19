@@ -44,6 +44,6 @@ func (v Info) String() string {
 }
 
 func (v Info) Json() string {
-	bs, _ := json.Marshal(v)
+	bs, _ := json.MarshalIndent(v, "", "  ")
 	return string(bs)
 }

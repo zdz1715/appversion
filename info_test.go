@@ -1,6 +1,7 @@
 package goappversion
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -10,5 +11,5 @@ func TestGet(t *testing.T) {
 	t.Logf("%#v", Get())
 	SetVersion("v1.23.2")
 	SetName("Kubernetes")
-	t.Logf("%s", Get().Json())
+	fmt.Println(Get().Json())
 }

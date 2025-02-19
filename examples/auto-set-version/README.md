@@ -6,7 +6,18 @@
 ```shell
 go build -o test-auto-set-app github.com/zdz1715/go-app-version/examples/auto-set-version
 ```
-执行`test-auto-set-app`后的输出信息:
-```text
-goappversion.Info{Name:"", Major:"0", Minor:"0", Patch:"0", Version:"v0.0.0-20250219071117-3d3b8b40641b", GitCommit:"3d3b8b40641b951dc7a9a61647cb852463867d44", GitTreeState:"dirty", BuildDate:"2025-02-19T07:11:17Z", GoVersion:"go1.23.6", Compiler:"gc", Platform:"darwin/arm64"}
+执行`test-auto-set-app`后的输出信息(Json):
+```json
+{
+  "major": "0",
+  "minor": "0",
+  "patch": "0",
+  "version": "v0.0.0-20250219080738-c563da6cd038",
+  "gitCommit": "c563da6cd038cfb4720c3e28eaf3f30e3079c643",
+  "gitTreeState": "dirty",
+  "buildDate": "2025-02-19T08:07:38Z",
+  "goVersion": "go1.23.6",
+  "compiler": "gc",
+  "platform": "darwin/arm64"
+}
 ```
