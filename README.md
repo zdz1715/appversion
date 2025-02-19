@@ -8,44 +8,8 @@ go get github.com/zdz1715/go-app-version
 ```
 
 ## 使用方式
-### 在程序中设置版本
-```go
-package main
-
-import (
-	"fmt"
-	goappversion "github.com/zdz1715/go-app-version"
-)
-
-func main() {
-	goappversion.SetVersion("v1.22.3")
-	fmt.Println(goappversion.Get().Json())
-}
-```
-Output:
-```shell
-{"major":"1","minor":"23","patch":"2","version":"v1.23.2","buildDate":"2024-09-11T18:50:42+08:00","goVersion":"go1.23.2","compiler":"gc","platform":"darwin/arm64"}
-```
-### 打包时注入版本
-需要`git`和`buildDate`信息，可以在`Makefile`里注入版本信息，下面使用git tag为版本号
-```Makefile
-# Git information
-GIT_COMMIT = $(shell git rev-parse HEAD)
-#GIT_COMMIT_HASH    = $(shell git rev-parse --short HEAD)
-GIT_COMMIT_HASH    = $(shell git rev-parse HEAD)
-GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
-GIT_TREESTATE  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
-BUILDDATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
-
-LDFLAGS += -X github.com/zdz1715/go-app-version.version=$(GIT_TAG)
-LDFLAGS += -X github.com/zdz1715/go-app-version.gitCommit=$(GIT_COMMIT_HASH)
-LDFLAGS += -X github.com/zdz1715/go-app-version.gitTreeState=$(GIT_TREESTATE)
-LDFLAGS += -X github.com/zdz1715/go-app-version.buildDate=$(BUILDDATE)
-
-.PHONY: build
-build: ## Build binary.
-	go build -ldflags "$(LDFLAGS)" -o app app/main.go
-```
+- [在项目中直接设置](./examples/set-version/main.go)
+- [打包时注入版本](./examples/build/README.md)
 
 ## 版本信息字段
 
