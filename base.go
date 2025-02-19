@@ -1,7 +1,6 @@
 package goappversion
 
 import (
-	"fmt"
 	"runtime/debug"
 	"time"
 )
@@ -44,7 +43,6 @@ func init() {
 	if !ok {
 		return
 	}
-	fmt.Println(bi)
 	if version == "" {
 		version = getGitVersion(bi)
 	}
