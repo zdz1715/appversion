@@ -1,4 +1,4 @@
-package goappversion
+package appversion
 
 import (
 	"runtime/debug"
@@ -43,7 +43,9 @@ func init() {
 	if !ok {
 		return
 	}
+
 	var buildTime time.Time
+
 	if buildDate == "" {
 		buildDate, buildTime = getBuildDate(bi)
 	}

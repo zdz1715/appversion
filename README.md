@@ -1,10 +1,10 @@
-# go-app-version
+# appversion
 快速设置Go应用版本信息，如果你需要编写多个应用的版本设置代码，你可能需要这个。
 
 ## 安装
 
 ```shell
-go get github.com/zdz1715/go-app-version
+go get github.com/zdz1715/appversion
 ```
 
 ## 使用方式

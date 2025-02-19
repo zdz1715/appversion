@@ -4,7 +4,7 @@
 ## 打包
 请确保在构建命令中使用你的模块全名。例如，如果你的模块全名是`example.com/myapp/cmd/myapp`，则需要将以下命令中的路径替换为你的模块路径。
 ```shell
-go build -o test-auto-set-app github.com/zdz1715/go-app-version/examples/auto-set-version
+go build -o test-auto-set-app github.com/zdz1715/appversion/examples/auto-set-version
 ```
 执行`test-auto-set-app`后的输出信息(Json):
 ```json

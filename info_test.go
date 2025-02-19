@@ -1,4 +1,4 @@
-package goappversion
+package appversion
 
 import (
 	"fmt"

@@ -7,10 +7,21 @@ GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
 GIT_TREESTATE  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
 BUILDDATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 
-LDFLAGS += -X github.com/zdz1715/go-app-version.version=$(GIT_TAG)
-LDFLAGS += -X github.com/zdz1715/go-app-version.gitCommit=$(GIT_COMMIT_HASH)
-LDFLAGS += -X github.com/zdz1715/go-app-version.gitTreeState=$(GIT_TREESTATE)
-LDFLAGS += -X github.com/zdz1715/go-app-version.buildDate=$(BUILDDATE)
+## Set your version by env or using latest tags from git
+VERSION ?= ""
+ifeq ($(VERSION), "")
+    ifeq ($(GIT_TAG),)
+        # Forked repo may not sync tags from upstream, so give it a default tag to make CI happy.
+        VERSION="v0.0.0"
+    else
+        VERSION=$(GIT_TAG)
+    endif
+endif
+
+LDFLAGS += -X github.com/zdz1715/appversion.version=$(VERSION)
+LDFLAGS += -X github.com/zdz1715/appversion.gitCommit=$(GIT_COMMIT_HASH)
+LDFLAGS += -X github.com/zdz1715/appversion.gitTreeState=$(GIT_TREESTATE)
+LDFLAGS += -X github.com/zdz1715/appversion.buildDate=$(BUILDDATE)
 
 ##@ General
 

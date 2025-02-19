@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	goappversion "github.com/zdz1715/go-app-version"
+	"github.com/zdz1715/appversion"
 )
 
 func main() {
-	fmt.Println(goappversion.Get().Json())
+	fmt.Println(appversion.Get().Json())
 }
