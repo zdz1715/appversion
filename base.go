@@ -14,7 +14,7 @@ import (
 var (
 	// if no version is set, get it from git tag,
 	// output of $(git describe --tags --abbrev=0 --exact-match)
-	version = ""
+	version = "v0.0.0"
 
 	// sha1 from git, output of $(git rev-parse HEAD)
 	gitCommit = "" // sha1 from git, output of $(git rev-parse HEAD)
@@ -43,9 +43,6 @@ func init() {
 	if !ok {
 		return
 	}
-	if version == "" {
-		version = getGitVersion(bi)
-	}
 
 	if buildDate == "" {
 		buildDate = getBuildDate(bi)
@@ -53,6 +50,10 @@ func init() {
 
 	if gitCommit == "" {
 		gitCommit = getCommit(bi)
+	}
+
+	if version == "v0.0.0" {
+		version = getGitVersion(bi)
 	}
 
 	if gitTreeState == "" {
@@ -63,7 +64,7 @@ func init() {
 
 func getGitVersion(bi *debug.BuildInfo) string {
 	if bi.Main.Version == "(devel)" || bi.Main.Version == "" {
-		return ""
+		return "v0.0.0"
 	}
 
 	return bi.Main.Version
