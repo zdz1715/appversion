@@ -7,7 +7,5 @@ import (
 )
 
 func main() {
-	//goappversion.SetVersion("v0.1.1")
-
 	fmt.Printf("%#v", goappversion.Get())
 }

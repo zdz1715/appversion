@@ -8,6 +8,7 @@ go get github.com/zdz1715/go-app-version
 ```
 
 ## 使用方式
+- [自动设置版本](./examples/auto-set-version/README.md)
 - [在项目中直接设置](./examples/set-version/main.go)
 - [打包时注入版本](./examples/build/README.md)
 
