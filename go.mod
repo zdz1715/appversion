@@ -1,3 +1,3 @@
-module github.com/zdz1715/go-pkg-version
+module github.com/zdz1715/go-app-version
 
 go 1.13

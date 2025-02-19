@@ -1,4 +1,4 @@
-package gopkgversion
+package goappversion
 
 import (
 	"encoding/json"

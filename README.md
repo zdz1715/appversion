@@ -1,10 +1,10 @@
-# go-pkg-version
-快速设置应用版本信息，如果你需要编写多个应用的版本设置代码，你可能需要这个。
+# go-app-version
+快速设置Go应用版本信息，如果你需要编写多个应用的版本设置代码，你可能需要这个。
 
 ## 安装
 
 ```shell
-go get github.com/zdz1715/go-pkg-version
+go get github.com/zdz1715/go-app-version
 ```
 
 ## 使用方式
@@ -14,12 +14,12 @@ package main
 
 import (
 	"fmt"
-	gopkgversion "github.com/zdz1715/go-pkg-version"
+	goappversion "github.com/zdz1715/go-app-version"
 )
 
 func main() {
-	gopkgversion.SetVersion("v1.22.3")
-	fmt.Println(gopkgversion.Get().Json())
+	goappversion.SetVersion("v1.22.3")
+	fmt.Println(goappversion.Get().Json())
 }
 ```
 Output:
@@ -37,10 +37,10 @@ GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
 GIT_TREESTATE  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
 BUILDDATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 
-LDFLAGS += -X github.com/zdz1715/go-pkg-version.version=$(GIT_TAG)
-LDFLAGS += -X github.com/zdz1715/go-pkg-version.gitCommit=$(GIT_COMMIT_HASH)
-LDFLAGS += -X github.com/zdz1715/go-pkg-version.gitTreeState=$(GIT_TREESTATE)
-LDFLAGS += -X github.com/zdz1715/go-pkg-version.buildDate=$(BUILDDATE)
+LDFLAGS += -X github.com/zdz1715/go-app-version.version=$(GIT_TAG)
+LDFLAGS += -X github.com/zdz1715/go-app-version.gitCommit=$(GIT_COMMIT_HASH)
+LDFLAGS += -X github.com/zdz1715/go-app-version.gitTreeState=$(GIT_TREESTATE)
+LDFLAGS += -X github.com/zdz1715/go-app-version.buildDate=$(BUILDDATE)
 
 .PHONY: build
 build: ## Build binary.
