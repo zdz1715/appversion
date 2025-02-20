@@ -1,11 +1,10 @@
 
 # Git information
 GIT_COMMIT = $(shell git rev-parse HEAD)
-#GIT_COMMIT_HASH    = $(shell git rev-parse --short HEAD)
-GIT_COMMIT_HASH    = $(shell git rev-parse HEAD)
-GIT_TAG    = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
-GIT_TREESTATE  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
-BUILDDATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
+GIT_COMMIT_SHORT = $(shell git rev-parse --short HEAD)
+GIT_TAG = $(shell git describe --tags --abbrev=0 --exact-match 2>/dev/null)
+GIT_TREE_STATE  = $(shell test -n "`git status --porcelain`" && echo "dirty" || echo "clean")
+BUILD_DATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 
 ## Set your version by env or using latest tags from git
 VERSION ?= ""
@@ -19,9 +18,9 @@ ifeq ($(VERSION), "")
 endif
 
 LDFLAGS += -X github.com/zdz1715/appversion.version=$(VERSION)
-LDFLAGS += -X github.com/zdz1715/appversion.gitCommit=$(GIT_COMMIT_HASH)
-LDFLAGS += -X github.com/zdz1715/appversion.gitTreeState=$(GIT_TREESTATE)
-LDFLAGS += -X github.com/zdz1715/appversion.buildDate=$(BUILDDATE)
+LDFLAGS += -X github.com/zdz1715/appversion.gitCommit=$(GIT_COMMIT)
+LDFLAGS += -X github.com/zdz1715/appversion.gitTreeState=$(GIT_TREE_STATE)
+LDFLAGS += -X github.com/zdz1715/appversion.buildDate=$(BUILD_DATE)
 
 ##@ General
 
